@@ -58,3 +58,33 @@ A **fixed neutron source** is defined using a Muir energy distribution to simula
 | `kt`          | Thermal spread of neutron energy distribution        | 20 keV      |
 
 The neutron source is **isotropic** and **cylindrically distributed**, ensuring an even spread of fusion neutrons. These neutrons interact with the reactor components, and their behavior is analyzed using OpenMC tallies.
+
+## Customizing
+
+### Breeder Material Change
+
+The breeder material in a fusion reactor is critical for neutron absorption and the production of tritium. In this model, the breeder material is initially set to **Li17Pb83**, a common lithium-lead alloy that is used for its ability to absorb neutrons and breed tritium. 
+
+To customize the breeder material in this model, you can modify the material properties 
+
+
+
+```python
+mat_blanket = openmc.Material(name="blanket")
+mat_blanket.add_elements_from_formula("Li4SiO4")  # New breeder material formula
+mat_blanket.set_density("g/cm3", 2.0)  # Adjusted density for Li4SiO4
+```
+
+## Outputs
+
+| Output               | Description                                                   |
+|----------------------|---------------------------------------------------------------|
+| `TBR tally`         | Tritium Breeding Ratio tally from neutron interactions        |
+| `Neutron transport` | Simulation of neutron behavior and interactions in the tokamak |
+| `Particle tracks`   | Monte Carlo tracking of neutron paths                         |
+| `Energy deposition` | Heat deposition from neutron interactions                     |
+| `Material reactions`| Nuclear reactions within materials (e.g., (n,Xt) reactions)  |
+
+
+## License
+[MIT License](https://opensource.org/licenses/MIT) © 2024 goel12133
