@@ -15,6 +15,7 @@ This repository contains a full neutron transport simulation of a submersion-sty
 git clone https://github.com/goel12133/openmc-paramak-opt.git
 cd openmc-paramak-opt
 pip install openmc paramak openmc-data-downloader
+```
 
 ## Geometry Explanation
 
